@@ -58,7 +58,7 @@ Label(app, text='Select an image and press enter button to start colour recognit
     'Verdana', 15)).pack(side=TOP, pady=10)
 Label(app, text='( Press Esc to close colour recognition application)', font=(
     'Verdana', 11)).pack(side=TOP, pady=10)
-app.title("Color_Recognition By SG")
+app.title("Color_Recognition By SG(1810992075)")
 app.geometry("1000x800")
 panelA = None
 
