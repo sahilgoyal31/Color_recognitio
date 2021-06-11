@@ -48,26 +48,27 @@ def select_image():
 
 # -------------------------------------------------------------------------------------------------------------
 import tkinter as tk
-import tkinter.font as tkFont
+import tkinter.font as font
 
 app = tk.Tk()
+app.configure(bg='cyan')
 Label(app, text='Color Recognition', font=(
-    'Verdana', 30)).pack(side=TOP, pady=10)
-Label(app, text='Select an image and press enter button to start colour recognition in Image', font=(
+    'Monotype Corsiva', 38,'bold')).pack(side=TOP, pady=10)
+Label(app, text='Select an image and press enter button to start colour recognition in Image ', font=(
     'Verdana', 15)).pack(side=TOP, pady=10)
+Label(app, text='( Press Esc to close colour recognition application)', font=(
+    'Verdana', 11)).pack(side=TOP, pady=10)
 app.title("Color_Recognition By SG")
 app.geometry("1000x800")
 panelA = None
 
 buttonExample1 = tk.Button(app,
-                           text="Select an Image",
-                           width=25,
-                           height=10, command=select_image)
-
-buttonExample2 = tk.Button(app,
-                           text="Enter",
-                           width=20,
-                           height=10, command=startt)
+                           text="Select an Image",width=12,height=10,
+                            command=select_image,bg='#32CD32')
+buttonExample1['font'] = font.Font(weight="bold")
+buttonExample2 = tk.Button(app,width=10,height=10,
+                           text="Enter", command=startt,bg='#32CD32')
+buttonExample2['font'] = font.Font(weight="bold")
 buttonExample1.pack(side=tk.LEFT)
 buttonExample2.pack(side=tk.RIGHT)
 
