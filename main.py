@@ -26,11 +26,13 @@ def select_image():
     global imagee
     imagee = img;
     height, width, c = img.shape
+    print(height,width)
     if height > 500:
         img = cv2.resize(img, (800, 550))
     if width > 800:
         img = cv2.resize(img, (800, 550))
 
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     image = Image.fromarray(img)
     image = ImageTk.PhotoImage(image)
 
@@ -52,12 +54,13 @@ import tkinter.font as font
 
 app = tk.Tk()
 app.configure(bg='cyan')
-Label(app, text='Color Recognition', font=(
-    'Monotype Corsiva', 38,'bold')).pack(side=TOP, pady=10)
+
+Label(app, text='Color Recognition ', borderwidth = 2,relief="ridge",font=(
+    'Monotype Corsiva', 38,'bold'),fg="green",bg="yellow").pack(side=TOP, pady=10)
 Label(app, text='Select an image and press enter button to start colour recognition in Image ', font=(
     'Verdana', 15)).pack(side=TOP, pady=10)
 Label(app, text='( Press Esc to close colour recognition application)', font=(
-    'Verdana', 11)).pack(side=TOP, pady=10)
+    'Verdana', 11),fg="red").pack(side=TOP, pady=10)
 app.title("Color_Recognition By SG(1810992075)")
 app.geometry("1000x800")
 panelA = None
@@ -110,23 +113,23 @@ while (1):
 
     cv2.imshow("color detection", img)
     if (clicked):
-        # cv2.rectangle(image, startpoint, endpoint, color, thickness)-1 fills entire rectangle
+       
         cv2.rectangle(img, (20, 20), (750, 60), (b, g, r), -1)
         color_name = getColorName(r, g, b) + ' R=' + str(r) + ' G=' + str(g) + ' B=' + str(b)
-        # cv2.putText(img,text,start,font(0-7),fontScale,color,thickness,lineType )
+        
         cv2.putText(img, color_name, (50, 50), 2, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
-        # For very light colours we will display text in black colour
+        
         if (r + g + b >= 600):
             cv2.putText(img, color_name, (50, 50), 2, 0.8, (0, 0, 0), 2, cv2.LINE_AA)
 
         clicked = False
-    # when user hit esc
+    
     if cv2.waitKey(20) & 0xFF == 27:
         break
 # -------------------------------------------------------------------------------------------------------------
 cv2.destroyAllWindows()
 
-# kick off the GUI
+
 
 
 
